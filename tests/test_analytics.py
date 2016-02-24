@@ -3,9 +3,10 @@ import sys
 import unittest
 sys.path.insert(0, os.path.abspath('..'))
 
-#from .. import analytics
-import analytics
-import utils
+from .. import analytics
+from .. import utils
+#import analytics
+#import utils
 import random
 
 class TestAnalytics(unittest.TestCase):
