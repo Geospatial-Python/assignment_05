@@ -17,7 +17,5 @@ class TestAnalytics(unittest.TestCase):
     self.assertTrue(self.upper < .10)
 
   def test_permutations(self):
-    some_points = [1, 3, 4, 10, 3.2, 10]
-    print(some_points)
-
-    critical_points = analytics.compute_critical(some_points)
+    point_count = 9
+    self.assertEqual(point_count, analytics.permutations(point_count))
