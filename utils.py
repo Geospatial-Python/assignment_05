@@ -1,6 +1,4 @@
-import analytics
 import random
-
 
 def manhattan_distance(a, b):
   """
