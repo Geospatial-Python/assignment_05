@@ -1,5 +1,7 @@
 import math
 import analytics
+import random
+
 
 def manhattan_distance(a, b):
   """
@@ -155,3 +157,18 @@ def gety(point):
      y coordinate
   """
   return point[1]
+
+def permutations(p=99, n=100):
+	#Compute the mean nearest neighbor distance
+	permutationz = []
+	for i in range(p):
+		points = random_points(n)
+		nearest_neighbor_distance = analytics.average_nearest_neighbor_distance(points)
+		permutationz.append(nearest_neighbor_distance)
+	return permutationz
+
+
+def random_points(n):
+	random.seed(666)
+	random_points = [(random.randint(0,100), random.randint(0,100)) for i in range(n)]
+	return random_points
