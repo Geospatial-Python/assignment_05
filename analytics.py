@@ -1,5 +1,4 @@
-import math
-
+from utils import *
 
 def find_largest_city(gj):
   """
@@ -182,3 +181,26 @@ def expected_distance(area, n):
 
   expected = (0.5 * (math.sqrt(area/n)))
   return expected
+
+
+def random_points(n):
+	random.seed(666)
+	random_points = [(random.randint(0,100), random.randint(0,100)) for i in range(n)]
+	return random_points
+
+
+def permutations(p=99, n=100):
+	#Compute the mean nearest neighbor distance
+	permutationz = []
+	for i in range(p):
+		points = random_points(n)
+		nearest_neighbor_distance = analytics.average_nearest_neighbor_distance(points)
+		permutationz.append(nearest_neighbor_distance)
+	return permutationz
+
+
+def compute_critical_points(points):
+	distances = permutations(points)
+	lower_bound = min(distances)
+	upper_bound = max(distances)
+	return lower_bound, upper_bound
