@@ -1,4 +1,4 @@
-from utils import *
+from .utils import *
 
 
 def find_largest_city(gj):
@@ -95,5 +95,4 @@ def compute_critical(p):
     Calculates the critical points (lowest distance and greatest distance) in a set of
     randomly generated permutations (created using permutations(p)).
     """
-    distances = permutations(p)
-    return min(distances), max(distances)
+    return min(p), max(p)

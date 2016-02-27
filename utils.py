@@ -1,6 +1,7 @@
 import math
 import random
 
+
 def create_random(n):
     """
     Generates n random points. Coordinates are between 0 and 1.00 inclusive.
@@ -9,10 +10,11 @@ def create_random(n):
     to_return = []
     for i in range(n):
         to_return.append((round(rng.uniform(0, 1), 2), round(rng.uniform(0, 1), 2)))
+    return to_return
 
 
-def check_critical(lower, upper, distance):
-    return ((distance < lower) or (distance > upper))
+def check_significant(lower, upper, distance):
+    return (distance < lower) or (distance > upper)
 
 
 def mean_center(points):
