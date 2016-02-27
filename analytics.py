@@ -1,4 +1,4 @@
-import utils
+from .utils import *
 
 def find_largest_city(gj):
   """
@@ -192,9 +192,9 @@ def create_random(n):
 def permutations(p=99, n=100):
 	#Compute the mean nearest neighbor distance
 	permutationz = []
-	for i in range(p):
+	for i in p:
 		points = create_random(n)
-		nearest_neighbor_distance = analytics.average_nearest_neighbor_distance(points)
+		nearest_neighbor_distance = average_nearest_neighbor_distance(points)
 		permutationz.append(nearest_neighbor_distance)
 	return permutationz
 
