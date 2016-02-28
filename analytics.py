@@ -1,6 +1,6 @@
 import math
 import random
-from utils import euclidean_distance, n_random_points
+from utils import *
 
 def find_largest_city(gj):
     """
