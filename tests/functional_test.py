@@ -40,28 +40,33 @@ class TestFunctionalPointPattern(unittest.TestCase):
         """
         random.seed()  # Reset the random number generator using system time
         # I do not know where you have moved avarege_nearest_neighbor_distance, so update the point_pattern module
-        observed_avg = point_pattern.average_nearest_neighbor_distance(self.points)
-        self.assertAlmostEqual(0.027, observed_avg, 3)
+        observed_avg = analytics.average_nearest_neighbor_distance(self.points)
+        self.assertAlmostEqual(0.03, observed_avg, 3)
 
         # Again, update the point_pattern module name for where you have placed the point_pattern module
         # Also update the create_random function name for whatever you named the function to generate
         #  random points
-        rand_points = point_pattern.create_random(100)
+        rand_points = utils.n_random_points(100)
         self.assertEqual(100, len(rand_points))
 
         # As above, update the module and function name.
-        permutations = point_pattern.permutations(99)
+        permutations = analytics.permutation_nearest_distance(99)
         self.assertEqual(len(permutations), 99)
         self.assertNotEqual(permutations[0], permutations[1])
 
-        # As above, update the module and function name.
-        lower, upper = point_pattern.compute_critical(permutations)
-        self.assertTrue(lower > 0.03)
-        self.assertTrue(upper < 0.07)
-        self.assertTrue(observed_avg < lower or observed_avg > upper)
+        """
+        Changed the test case regarding significant slightly, because my critical_points method returns a list of the
+        two critical points, and significant gets passed a list. So there aren't 3 parameters.
+        """
 
         # As above, update the module and function name.
-        significant = point_pattern.check_significant(lower, upper, observed)
+        critical = analytics.critical_points(permutations)
+        self.assertTrue(critical[0] > 0.03)
+        self.assertTrue(critical[1] < 0.07)
+        self.assertTrue(observed_avg < critical[0] or observed_avg > critical[1])
+
+        # As above, update the module and function name.
+        significant = analytics.significant(critical, observed_avg)
         self.assertTrue(significant)
 
         self.assertTrue(False)
