@@ -8,7 +8,7 @@ def n_random_points(n):
     """
 
     #use list comprehensions to generate n point list
-    points = [(random.randint(0,500), random.randint(0,500)) for x in range(n)]
+    points = [(random.uniform(0,1), random.uniform(0,1)) for x in range(n)]
 
     return points
 

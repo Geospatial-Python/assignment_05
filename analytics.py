@@ -108,7 +108,6 @@ def average_nearest_neighbor_distance(points):
 
     #find the distance between a point i and every other point
     shDistL =[]       #list of shortest distances
-    mean_sum = 0
     for point in points:
         shortestDistance = 9999999999
         for dpoint in points:
@@ -118,14 +117,12 @@ def average_nearest_neighbor_distance(points):
                     shortestDistance = dist
         #now add the shortest distance of that point before it moves on to a new point
         shDistL.append(shortestDistance)
-        mean_sum = shortestDistance + mean_sum
 
     #once shDistL has all of the shortest distances, find the sum of those and divide by the number of points sums = map(sum,zip(*points))
     #sums = map(sum,shDistL) #list like [x]
-   # print(type(sums))
-    print(shDistL)
+   
     sums = sum(shDistL)
-    mean_d = mean_sum/len(shDistL)
+    mean_d = sums/len(shDistL)
     return mean_d
 
 
@@ -159,7 +156,8 @@ def minimum_bounding_rectangle(points):
         if point[1] > ymax:
             ymax = point[1]
     mbr = [xmin,ymin,xmax,ymax]
-
+    print("This is the mbr:")
+    print(mbr)
     return mbr
 
 def mbr_area(mbr):

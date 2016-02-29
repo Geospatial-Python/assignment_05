@@ -13,7 +13,7 @@ class TestAnalytics(unittest.TestCase):
         # Seed a random number generator so we get the same random values every time
         random.seed(12345)
         # A list comprehension to create 50 random points
-        cls.points = [(random.randint(0,100), random.randint(0,100)) for i in range(50)]
+        cls.points = [(random.uniform(0,1), random.uniform(0,1)) for i in range(50)]
 
     def test_permutation(self):
         list = analytics.permutation_nearest_distance()
@@ -41,7 +41,10 @@ class TestAnalytics(unittest.TestCase):
 
     def test_average_nearest_neighbor_distance(self):
         mean_d = analytics.average_nearest_neighbor_distance(self.points)
-        self.assertAlmostEqual(mean_d, 7.629178, 5)
+        self.assertAlmostEqual(mean_d, 0.0884470472, 5)
+    """
+    Changed from 7.629178 to 0.0884470472 because with the changed domain from (1-100) to (0-1), mean_d will be very different
+    """
 
     def test_mean_center(self):
         """
@@ -49,13 +52,20 @@ class TestAnalytics(unittest.TestCase):
          expect to see here and why?  Why are the values
          not what you might expect?
         """
+        """
+        Changed assert statements/test values slightly to match with domain of [0,1]
+        """
+
         x, y = analytics.mean_center(self.points)
-        self.assertEqual(x, 47.52)
-        self.assertEqual(y, 45.14)
+        self.assertAlmostEqual(x, 0.50273194,5)
+        self.assertAlmostEqual(y, 0.45796236, 5)
 
     def test_minimum_bounding_rectangle(self):
         mbr = analytics.minimum_bounding_rectangle(self.points)
-        self.assertEqual(mbr, [0,0,94,98])
+        self.assertAlmostEqual(mbr[0], 0.003331,5)
+        self.assertAlmostEqual(mbr[1], 0.003184,5)
+        self.assertAlmostEqual(mbr[2], 0.994604,5)
+        self.assertAlmostEqual(mbr[3], 0.967482,5)
 
     def test_mbr_area(self):
         mbr = [0,0,94,98]
