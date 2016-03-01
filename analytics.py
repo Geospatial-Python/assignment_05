@@ -40,7 +40,7 @@ def write_your_own(gj):
     This function finds the least populated city, pop_min
     """
     featureList = gj["features"]
-    minPop = 999999999
+    minPop = math.inf
     for featureEntry in featureList:
         #feature["properties"]["pop_min"] for feature in self.gj["features"]
         if featureEntry["properties"]["pop_min"] < minPop:
@@ -103,24 +103,22 @@ def average_nearest_neighbor_distance(points):
      p. 445-453.
     """
 
-    #d_i is the set of all of the distances between i and it's closest neighbor.
-    #then, between all of those distances, you divide by the number of points.
-
-    #find the distance between a point i and every other point
     shDistL =[]       #list of shortest distances
-    for point in points:
-        shortestDistance = 9999999999
-        for dpoint in points:
-            if point != dpoint:
+
+    #now the points are numbered... so if the points
+    #have the same counter number attached also, then they
+    #are self-neighbors, but if num1 != num2, then they are
+    # coincident points, with distance = 0
+    for num1, point in enumerate(points):
+        shortestDistance = math.inf
+        for num2, dpoint in enumerate(points):
+            if num1 != num2:
                 dist = euclidean_distance(point, dpoint)
                 if(shortestDistance > dist):
                     shortestDistance = dist
         #now add the shortest distance of that point before it moves on to a new point
         shDistL.append(shortestDistance)
-
-    #once shDistL has all of the shortest distances, find the sum of those and divide by the number of points sums = map(sum,zip(*points))
-    #sums = map(sum,shDistL) #list like [x]
-   
+    print(shDistL)
     sums = sum(shDistL)
     mean_d = sums/len(shDistL)
     return mean_d
@@ -142,8 +140,8 @@ def minimum_bounding_rectangle(points):
     """
     # a minimum bounding rectangle would be on the extremes of x/y
 
-    xmin = 99999999999
-    ymin = 99999999999
+    xmin = math.inf
+    ymin = math.inf
     xmax = -9999999999
     ymax = -9999999999
     for point in points:
