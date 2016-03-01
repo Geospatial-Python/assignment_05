@@ -1,4 +1,8 @@
+'''
+Created on Feb 23, 2016
 
+@author: Max Ruiz
+'''
 
 import math
 
@@ -28,14 +32,8 @@ def compute_critical(p):
 
     Return(s): float lower, float upper
     """
-    lower = p[0]
-    upper = p[0]
-    for distance in p:
-        if distance < lower:
-            lower = distance
-        elif distance > upper:
-            upper = distance
-
+    lower = min(p)
+    upper = max(p)
     return lower, upper
 
 def check_significant(lower, upper, observed):
