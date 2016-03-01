@@ -5,7 +5,7 @@ Created on Feb 23, 2016
 '''
 import math
 import random
-import .analytics
+from .analytics import average_nearest_neighbor_distance
 
 '''
 Function List
@@ -48,7 +48,7 @@ def permutations(p=99, n=100):
     perm = []
     for x in range(p):
         points = create_random(n, None)
-        avg_nnd = analytics.average_nearest_neighbor_distance(points)
+        avg_nnd = average_nearest_neighbor_distance(points)
         perm.append(avg_nnd)
 
     return perm
