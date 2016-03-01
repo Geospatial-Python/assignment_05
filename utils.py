@@ -5,7 +5,7 @@ Created on Feb 23, 2016
 '''
 import math
 import random
-import analytics
+import .analytics
 
 '''
 Function List
