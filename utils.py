@@ -23,7 +23,7 @@ permutations(p)
 '''
 
 '''Assignment 5 functions'''
-def create_random(n):
+def create_random(n, seed=None):
     """
     Generate n random points in the form (x,y)
 
@@ -31,11 +31,9 @@ def create_random(n):
 
     Return(s): list points
     """
-    # Seed a random number generator so we get the same random values every time
-    random.seed(12345)
-
+    random.seed(seed)
     # A list comprehension to create n random points
-    points = [(random.randint(0,100), random.randint(0,100)) for i in range(n)]
+    points = [(random.uniform(0,1), random.uniform(0,1)) for i in range(n)]
     return points
 
 def permutations(p=99, n=100):
@@ -49,9 +47,11 @@ def permutations(p=99, n=100):
     """
     perm = []
     for x in range(p):
-        points = create_random(n)
+        points = create_random(n, None)
         avg_nnd = analytics.average_nearest_neighbor_distance(points)
         perm.append(avg_nnd)
+
+    return perm
 
 def manhattan_distance(a, b):
     """
