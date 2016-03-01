@@ -1,16 +1,15 @@
 import random
 import unittest
 
+'''
+from .. import analytics
+from .. import io_geojson
+from .. import utils
+'''
 
 from .. import analytics
 from .. import io_geojson
 from .. import utils
-
-'''
-import analytics
-import io_geojson
-import utils
-'''
 
 class TestFunctionalPointPattern(unittest.TestCase):
 
@@ -47,7 +46,7 @@ class TestFunctionalPointPattern(unittest.TestCase):
         random.seed()  # Reset the random number generator using system time
         # I do not know where you have moved avarege_nearest_neighbor_distance, so update the point_pattern module
         observed_avg = analytics.average_nearest_neighbor_distance(self.points)
-        self.assertAlmostEqual(0.027, observed_avg, 3)
+        self.assertAlmostEqual(0.03001895090111224, observed_avg, 3)
 
         # Again, update the point_pattern module name for where you have placed the point_pattern module
         # Also update the create_random function name for whatever you named the function to generate
