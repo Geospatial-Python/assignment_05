@@ -13,6 +13,7 @@ class TestAnalytics(unittest.TestCase):
         random.seed(12345)
         # A list comprehension to create 50 random points
         self.points = [(random.randint(0,100), random.randint(0,100)) for i in range(50)]
+        self.gj = []
         pass
 
     def test_find_largest(self):

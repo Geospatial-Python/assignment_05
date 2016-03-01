@@ -1,7 +1,12 @@
 #analytics
 import math
 import json
-import utils
+import sys 
+import os
+
+sys.path.insert(0, os.path.abspath('..'))
+
+from . import utils
 
 def find_largest_city(gj):
     """

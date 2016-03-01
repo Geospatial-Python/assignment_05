@@ -2,8 +2,8 @@
 import random
 
 def create_random_points(n):
-    random.seed(12345)
-    random_points = [(random.randint(0,100), random.randint(0,100)) for i in range(n)]
+    rand = random.Random()
+    random_points = [(rand.randint(0,100), rand.randint(0,100)) for i in range(n)]
     return random_points
 
 def shift_point(point, x_shift, y_shift):
