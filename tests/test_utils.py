@@ -4,6 +4,7 @@ import unittest
 sys.path.insert(0, os.path.abspath('..'))
 
 from .utils import create_n_rand_pts
+from .utils import critical_pts
 
 class TestUtils(unittest.TestCase):
 
@@ -19,11 +20,11 @@ class TestUtils(unittest.TestCase):
 	
     def test_create_n_rand_pts(self):
         
-        self.assertEqual(100, len(utils.create_n_rand_pts(100)))
+        self.assertEqual(100, len(create_n_rand_pts(100)))
 	
     def test_critical_pts(self):
 		
-        self.assertEqual(utils.critical_pts(range(1,1000)),(1,999))
+        self.assertEqual(critical_pts(range(1,1000)),(1,999))
 	
 
     def test_gety(self):
