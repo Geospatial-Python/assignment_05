@@ -196,9 +196,8 @@ def permutations(p=99, n=100):
 
 
 def compute_critical(points):
-	distances = permutations(points)
-	lower_bound = min(distances)
-	upper_bound = max(distances)
+	lower_bound = min(points)
+	upper_bound = max(points)
 	return lower_bound, upper_bound
 
 
