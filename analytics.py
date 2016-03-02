@@ -182,7 +182,7 @@ def expected_distance(area, n):
 
 
 def create_random(n):
-	random.seed(666)
+	random.seed()
 	random_points = [(random.randint(0,100), random.randint(0,100)) for i in range(n)]
 	return random_points
 
