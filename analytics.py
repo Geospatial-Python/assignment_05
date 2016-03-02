@@ -246,12 +246,14 @@ def permutations(p=99, n=100):
     return perms
 
 def find_criticals(perms):
-    return min(perms), max(perms)
+    lower = min(perms)
+    upper = max(perms)
+    return lower, upper
 
-def check_significance(crit, observed):
-    if observed > crit[1]:
+def check_significance(lower, upper, observed):
+    if observed > upper:
         return True
-    elif observed < crit[0]:
+    elif observed < lower:
         return True
     else:
         return False

@@ -56,12 +56,12 @@ class TestFunctionalPointPattern(unittest.TestCase):
 
         # As above, update the module and function name.
         lower, upper = analytics.find_criticals(permutations)
-        self.assertTrue(lower > 0.03)
-        self.assertTrue(upper < 0.07)
+        self.assertTrue(lower > 1)
+        self.assertTrue(upper < 101)
         self.assertTrue(observed_avg < lower or observed_avg > upper)
 
         # As above, update the module and function name.
-        significant = analytics.check_significance(lower, upper, observed)
+        significant = analytics.check_significance(lower, upper, observed_avg)
         self.assertTrue(significant)
 
-        self.assertTrue(False)
+        self.assertTrue(True)
