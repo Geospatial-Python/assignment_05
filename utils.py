@@ -4,10 +4,10 @@ import random
 
 
 def create_n_rand_pts(n):
-	n_pts = [rand.uniform(0,1), rand.uniform(0,1) for i in range(100)]
+	n_pts = [(rand.uniform(0,1), rand.uniform(0,1)) for i in range(100)]
 	return n_pts
 
-def critical_pts(distances)
+def critical_pts(distances):
 	return min(distances), max(distances)
 	
 def shift_point(point, x_shift, y_shift):

@@ -1,16 +1,16 @@
 import random
 import math
 
-def p_perms(p=99,n=100)
+def p_perms(p=99,n=100):
 	
-	mean_nn_dist =  [];
+	mean_nn_dist =  []
 	
-	for i in range(p)
+	for i in range(p):
 		mean_nn_dist.append(average_nearest_neighbor_distance(create_n_rand_pts(100)));
 	
 	return mean_nn_dist
 
-def monte_carlo_critical_bound_check(lb,ub,obs)
+def monte_carlo_critical_bound_check(lb,ub,obs):
 	return obs<lb or obs>ub
 	
 def minimum_bounding_rectangle(points):

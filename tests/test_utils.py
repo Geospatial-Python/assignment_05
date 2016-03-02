@@ -10,45 +10,29 @@ class TestUtils(unittest.TestCase):
     def setUp(self):
         pass
 		
-	def test_getx(self):
-        """
-        A simple test to ensure that you understand how to access
-        the x coordinate in a tuple of coordinates.
-
-        You do not need to make any changes to this test,
-        instead, in utils.py, you must complete the
-        `getx` function so that the correct
-        values are returned.
-        """
+	
+    
+    
+    def test_getx(self):
+        
         point = (1,2)
         x = utils.getx(point)
         self.assertEqual(1, x)
 	
-	def test_create_n_rand_pts(self):
+    def test_create_n_rand_pts(self):
 		self.assertEqual(100, len(create_n_rand_pts))
 	
-	def test_critical_pts
+    def test_critical_pts(self):
 		self.assertEqual(critical_pts(range(1,1000)),[1,1000])
 	
-	def test_gety(self):
-        """
-        As above, except get the y coordinate.
 
-        You do not need to make any changes to this test,
-        instead, in utils.py, you must complete the
-        `gety` function so that the correct
-        values are returned.
-        """
+    def test_gety(self):
+
         point = (3,2.5)
         y = utils.gety(point)
         self.assertEqual(2.5, y)
 
-	def test_shift_point(self):
-        """
-        Test that a point is being properly shifted
-         when calling utils.shift_point
-        """
-        point = (0,0)
+    def test_shift_point(self):
         new_point = utils.shift_point(point, 3, 4)
         self.assertEqual((3,4), new_point)
 
@@ -56,20 +40,8 @@ class TestUtils(unittest.TestCase):
         new_point = utils.shift_point(point, 2.34, -1.19)
         self.assertEqual((0,0), new_point)
 
-	def test_euclidean_distance(self):
-        """
-        A test to ensure that the distance between points
-        is being properly computed.
-
-        You do not need to make any changes to this test,
-        instead, in utils.py, you must complete the
-        `eucliden_distance` function so that the correct
-        values are returned.
-
-        Something to think about: Why might you want to test
-        different cases, e.g. all positive integers, positive
-        and negative floats, coincident points?
-        """
+    def test_euclidean_distance(self):
+    
         point_a = (3, 7)
         point_b = (1, 9)
         distance = utils.euclidean_distance(point_a, point_b)
@@ -85,20 +57,8 @@ class TestUtils(unittest.TestCase):
         distance = utils.euclidean_distance(point_b, point_a)
         self.assertAlmostEqual(0.0, distance, 4)
 
-	def test_manhattan_distance(self):
-        """
-        A test to ensure that the distance between points
-        is being properly computed.
+    def test_manhattan_distance(self):
 
-        You do not need to make any changes to this test,
-        instead, in utils.py, you must complete the
-        `eucliden_distance` function so that the correct
-        values are returned.
-
-        Something to think about: Why might you want to test
-        different cases, e.g. all positive integers, positive
-        and negative floats, coincident points?
-        """
         point_a = (3, 7)
         point_b = (1, 9)
         distance = utils.manhattan_distance(point_a, point_b)
@@ -114,11 +74,9 @@ class TestUtils(unittest.TestCase):
         distance = utils.manhattan_distance(point_b, point_a)
         self.assertAlmostEqual(0.0, distance, 4)
 
-	def test_check_coincident(self):
-        """
-        As above, update the function in utils.py
 
-        """
+    def test_check_coincident(self):
+
         point_a = (3, 7)
         point_b = (3, 7)
         coincident = utils.check_coincident(point_a, point_b)
@@ -133,7 +91,8 @@ class TestUtils(unittest.TestCase):
         coincident = utils.check_coincident(point_b, point_a)
         self.assertEqual(coincident, True)
 
-	def test_euclidean_distance(self):
+    
+    def test_euclidean_distance(self):
         """
         A test to ensure that the distance between points
         is being properly computed.
@@ -162,7 +121,8 @@ class TestUtils(unittest.TestCase):
         distance = utils.euclidean_distance(point_b, point_a)
         self.assertAlmostEqual(0.0, distance, 4)
 		
-	def test_check_in(self):
+    
+    def test_check_in(self):
         """
         As above, update the function in utils.py
         """
