@@ -1,147 +1,95 @@
 import math
 
+
+def compute_critical(p):
+    lower = min(p)
+    upper = max(p)
+
+    return lower, upper
+
+def check_significant(lower, upper, observed):
+
+    return observed < lower or observed > upper
+
+def euclidean_distance(a, b):
+
+    distance = math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
+
+    return distance
+
+def find_largest_city(gj):
+
+     max_population = 0
+     for feat in gj['features']:
+         test_max_pop = feat['properties']['pop_max']
+         if test_max_pop > max_population:
+             max_population = test_max_pop
+             city = feat['properties']['name']
+
+     return city, max_population
+
 def mean_center(points):
-    """
-    Given a set of points, compute the mean center
-    Parameters
-    ----------
-    points : list
-         A list of points in the form (x,y)
-    Returns
-    -------
-    x : float
-        Mean x coordinate
-    y : float
-        Mean y coordinate
-    """
-    #x = None
-    #y = None
-
-    x = [i[0] for i in points]
-    y = [i[1] for i in points]
-
-    sumX = (sum(x) / len(points))
-    sumY = (sum(y) / len(points))
-
-    x = sumX
-    y = sumY
+    sumx= 0.0
+    sumy= 0.0
+    for coord in points:
+        sumx+=coord[0]
+        sumy+=coord[1]
+    x= sumx/len(points)
+    y=sumy/len(points)
 
     return x, y
 
-
 def average_nearest_neighbor_distance(points):
-    """
-    Given a set of points, compute the average nearest neighbor.
-    Parameters
-    ----------
-    points : list
-             A list of points in the form (x,y)
-    Returns
-    -------
-    mean_d : float
-             Average nearest neighbor distance
-    References
-    ----------
-    Clark and Evan (1954 Distance to Nearest Neighbor as a
-     Measure of Spatial Relationships in Populations. Ecology. 35(4)
-     p. 445-453.
-    """
-    mean_d = 0
+    min_dist_sum = 0
+    for coord_x in points:
+        first = True
+        for  coord_y in points:
+            if coord_x == coord_y:
+              continue
+            else:
+                 d = euclidean_distance(coord_x, coord_y)
+                 if first:
+                    min_dist = d
+                    first = False
+                 else:
+                    if d < min_dist:
+                        min_dist = d
+        min_dist_sum += min_dist
 
-    shortDistanceList = []
-
-    for firstPoint in points:
-        pointInList = 500
-        for secondPoint in points:
-            if firstPoint is not secondPoint:
-                distance = euclidean_distance(firstPoint, secondPoint)
-                if (pointInList > distance):
-                    pointInList = distance
-
-        shortDistanceList.append(pointInList)
-
-    mean_d = sum(shortDistanceList) / len(points)
+    mean_d = min_dist_sum / len(points)
 
     return mean_d
 
+def minimum_bounding_retangle(points):
+     xmin = 0
+     xmax = 0
+     ymin = 0
+     ymax = 0
+     for coord in points:
+         if coord[0] < xmin:
+             xmin = coord[0]
+         elif coord[0] > xmax:
+             xmax = coord[0]
 
-def minimum_bounding_rectangle(points):
-    """
-    Given a set of points, compute the minimum bounding rectangle.
-    Parameters
-    ----------
-    points : list
-             A list of points in the form (x,y)
-    Returns
-    -------
-     : list
-       Corners of the MBR in the form [xmin, ymin, xmax, ymax]
-    """
+         if coord[1] < ymin:
+             ymin = coord[1]
+         elif coord[1] > ymax:
+             ymax = coord[1]
 
-    mbr = [0,0,0,0]
+     xcorner = xmax - xmin
+     ycorner = ymax - ymin
+     mbr = [0,0,xcorner,ycorner]
 
-    xmin = 0
-    ymin = 0
-    xmax = 0
-    ymax = 0
-
-    for i in points:
-        if i[0] < xmin:
-            xmin = i[0]
-        if i[1] < ymin:
-            ymin = i[1]
-        if i[0] > xmax:
-            xmax = i[0]
-        if i[1] > ymax:
-            ymax = i[1]
-
-    mbr = [xmin,ymin,xmax,ymax]
-
-
-    return mbr
-
+     return mbr
 
 def mbr_area(mbr):
-    """
-    Compute the area of a minimum bounding rectangle
-    """
-    area = 0
-
     length = mbr[3] - mbr[1]
-    width = mbr[2] - mbr [0]
+    width = mbr[2] - mbr[0]
     area = length * width
 
     return area
 
-
 def expected_distance(area, n):
-    """
-    Compute the expected mean distance given
-    some study area.
-    This makes lots of assumptions and is not
-    necessarily how you would want to compute
-    this.  This is just an example of the full
-    analysis pipe, e.g. compute the mean distance
-    and the expected mean distance.
-    Parameters
-    ----------
-    area : float
-           The area of the study area
-    n : int
-        The number of points
-    """
-
-    expected = 0
-
-    expected = (math.sqrt(area/n)) * (0.5)
+    expected = .5 * math.sqrt(area/n)
 
     return expected
-
-def num_permutations(p = 99, n= 100):
-
-    ListOfNum = []
-
-    for i in range(p):
-        ListOfNum.append(average_nearest_neighbor_distance(random_points(n)))
-
-    return ListOfNum
