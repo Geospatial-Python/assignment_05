@@ -16,24 +16,8 @@ class TestFilesAndDicts(unittest.TestCase):
     """
 
     @classmethod
-    def setUpClass(cls):
-        cls.gj = io_geojson.read_geojson('data/us_cities.geojson')
-
-    def test_read_geojson(self):
-        self.assertIsInstance(self.gj, dict)
-
-    def test_find_largest(self):
-        city, pop = analytics.find_largest_city(self.gj)
-        self.assertEqual(city, 'New York')
-        self.assertEqual(pop, 19040000)
-
-    def test_write_your_own(self):
-        """
-        Here you will write a test for the code you write in
-        analytics.py.
-        """
-        some_return = analytics.write_your_own(self.gj)
-        self.assertTrue(some_return,308473.3217503218)
+    def setUp(self):
+        pass
 
 
 class TestAnalytics(unittest.TestCase):
