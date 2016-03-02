@@ -3,7 +3,7 @@ import math
 
 from .utils import create_n_rand_pts
 from .utils import euclidean_distance
- 
+
 def p_perms(p=99,n=100):
 	
 	mean_nn_dist =  []
@@ -156,7 +156,7 @@ def average_nearest_neighbor_distance(points):
     for i in points:
         dist_nearest=1e9
         for j in points:
-            dist = utils.euclidean_distance(i, j)
+            dist = euclidean_distance(i, j)
             if i==j:
                 continue
             elif dist < dist_nearest:
