@@ -7,5 +7,8 @@ from .. import io_geojson
 
 class TestIoGeoJson(unittest.TestCase):
 
-    def setUp(self):
+    def test_read_geojson(self):
         pass
+
+    "hardest test to make"
+       
