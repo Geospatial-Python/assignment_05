@@ -3,7 +3,7 @@ import sys
 import unittest
 sys.path.insert(0, os.path.abspath('..'))
 
-from .. import utils
+from .utils import create_n_rand_pts
 
 class TestUtils(unittest.TestCase):
 
