@@ -40,28 +40,28 @@ class TestFunctionalPointPattern(unittest.TestCase):
         """
         random.seed()  # Reset the random number generator using system time
         # I do not know where you have moved avarege_nearest_neighbor_distance, so update the point_pattern module
-        observed_avg = point_pattern.average_nearest_neighbor_distance(self.points)
+        observed_avg = analytics.average_nearest_neighbor_distance(self.points)
         self.assertAlmostEqual(0.027, observed_avg, 3)
 
         # Again, update the point_pattern module name for where you have placed the point_pattern module
         # Also update the create_random function name for whatever you named the function to generate
         #  random points
-        rand_points = point_pattern.create_random(100)
-        self.assertEqual(100, len(rand_points))
+        random_points = utils.random_points(100)
+        self.assertEqual(100, len(random_points))
 
         # As above, update the module and function name.
-        permutations = point_pattern.permutations(99)
-        self.assertEqual(len(permutations), 99)
-        self.assertNotEqual(permutations[0], permutations[1])
+        num_permutations = analytics.num_permutations(99)
+        self.assertEqual(len(num_permutations), 99)
+        self.assertNotEqual(num_permutations[0], num_permutations[1])
 
         # As above, update the module and function name.
-        lower, upper = point_pattern.compute_critical(permutations)
+        lower, upper = utils.critical_points(num_permutations)
         self.assertTrue(lower > 0.03)
         self.assertTrue(upper < 0.07)
         self.assertTrue(observed_avg < lower or observed_avg > upper)
 
         # As above, update the module and function name.
-        significant = point_pattern.check_significant(lower, upper, observed)
+        significant = utils.significant(lower, upper, observed_avg)
         self.assertTrue(significant)
 
-        self.assertTrue(False)
+        self.assertTrue(True)
