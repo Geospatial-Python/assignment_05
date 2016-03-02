@@ -21,6 +21,7 @@ permutations
 import math
 import random
 from .analytics import average_nearest_neighbor_distance
+
 def manhattan_distance(a, b):
     distance =  abs(a[0] - b[0]) + abs(a[1] - b[1])
 
