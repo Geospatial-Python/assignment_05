@@ -1,6 +1,8 @@
 import random
 import math
-import utils
+
+from .. import utils
+
 def p_perms(p=99,n=100):
 	
 	mean_nn_dist =  []

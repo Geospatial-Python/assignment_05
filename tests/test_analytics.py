@@ -5,8 +5,7 @@ import random
 
 sys.path.insert(0, os.path.abspath('..'))
 
-#from .. 
-import analytics
+from .. import analytics
 
 class TestAnalytics(unittest.TestCase):
 
