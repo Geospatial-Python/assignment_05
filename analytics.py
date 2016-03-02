@@ -1,12 +1,12 @@
 import random
 import math
-
+import utils
 def p_perms(p=99,n=100):
 	
 	mean_nn_dist =  []
 	
 	for i in range(p):
-		mean_nn_dist.append(average_nearest_neighbor_distance(create_n_rand_pts(100)));
+		mean_nn_dist.append(average_nearest_neighbor_distance(utils.create_n_rand_pts(100)));
 	
 	return mean_nn_dist
 
@@ -153,7 +153,7 @@ def average_nearest_neighbor_distance(points):
     for i in points:
         dist_nearest=1e9
         for j in points:
-            dist = euclidean_distance(i, j)
+            dist = utils.euclidean_distance(i, j)
             if i==j:
                 continue
             elif dist < dist_nearest:

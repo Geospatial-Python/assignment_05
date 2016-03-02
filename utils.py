@@ -4,7 +4,7 @@ import random
 
 
 def create_n_rand_pts(n):
-	n_pts = [(rand.uniform(0,1), rand.uniform(0,1)) for i in range(100)]
+	n_pts = [(random.uniform(0,1), random.uniform(0,1)) for i in range(100)]
 	return n_pts
 
 def critical_pts(distances):
