@@ -32,12 +32,18 @@ def check_significant(lower, upper, observed):
 
     return observed < lower or observed > upper
 
+def euclidean_distance(a, b):
+
+    distance = math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
+
+    return distance
+
 def find_largest_city(gj):
 
-    max_population = 0
-    for feat in gj['features']:
+     max_population = 0
+     for feat in gj['features']:
          test_max_pop = feat['properties']['pop_max']
-        if test_max_pop > max_population:
+         if test_max_pop > max_population:
              max_population = test_max_pop
              city = feat['properties']['name']
 
@@ -59,13 +65,14 @@ def average_nearest_neighbor_distance(points):
     for coord_x in points:
         first = True
         for  coord_y in points:
+            if coord_x == coord_y:
               continue
             else:
-                d = euclidean_distance(coord_x, coord_y)
-                if first:
+                 d = euclidean_distance(coord_x, coord_y)
+                 if first:
                     min_dist = d
                     first = False
-                else:
+                 else:
                     if d < min_dist:
                         min_dist = d
         min_dist_sum += min_dist
@@ -107,3 +114,4 @@ def expected_distance(area, n):
     expected = .5 * math.sqrt(area/n)
 
     return expected
+
