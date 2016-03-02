@@ -1,6 +1,4 @@
 import math
-import random
-from utils import euclidean_distance, random_points
 
 def mean_center(points):
     """
