@@ -1,14 +1,14 @@
 import random
 import math
 
-from .. import utils
+from .utils import create_n_rand_pts
 
 def p_perms(p=99,n=100):
 	
 	mean_nn_dist =  []
 	
 	for i in range(p):
-		mean_nn_dist.append(average_nearest_neighbor_distance(utils.create_n_rand_pts(100)));
+		mean_nn_dist.append(average_nearest_neighbor_distance(create_n_rand_pts(100)));
 	
 	return mean_nn_dist
 
