@@ -108,6 +108,5 @@ class TestAnalytics(unittest.TestCase):
     def test_find_criticals(self):
         crit_values = point_pattern.find_criticals([1, 2, 3, 4, 5, 6, 7])
         self.assertTrue(crit_values[0] == 1 and crit_values[1] == 7)
-
     def test_check_significance(self):
         self.assertTrue(point_pattern.check_significance(22, 4, 40))
