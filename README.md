@@ -41,4 +41,3 @@ If TravisCI shows an error (red X in the pull request) feel free to update
 your repository (`git add -A .`, `git commit`, `git push origin master`).  Please
 *do not* open more than one pull request.
 
-
