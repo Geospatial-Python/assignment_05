@@ -9,3 +9,8 @@ class TestIoGeoJson(unittest.TestCase):
 
     def setUp(self):
         pass
+
+    def test_read_geojson(self):
+        pass
+
+    "hardest test to make"
