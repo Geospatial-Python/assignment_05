@@ -1,4 +1,5 @@
 import json
+from urllib.request import urlopen
 
 def read_geojson(input_file):
   """
@@ -14,6 +15,9 @@ def read_geojson(input_file):
   gj : dict
        An in memory version of the geojson
   """
-  with open(input_file, 'r') as f:
-      gj = json.load(f)
+  # with open(input_file, 'r') as f:
+  #     gj = json.load(f)
+  response = urlopen("https://api.myjson.com/bins/4587l").read().decode('utf8')
+  gj = json.loads(response)
+
   return gj
