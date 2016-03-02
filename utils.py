@@ -3,7 +3,7 @@ import random
 
 def create_random_points(n):
     rand = random.Random()
-    random_points = [(rand.randint(0,1, rand.randint(0,1)) for i in range(n)]
+    random_points = [(rand.randint(0,1), rand.randint(0,1)) for i in range(n)]
     return random_points
 
 def shift_point(point, x_shift, y_shift):
