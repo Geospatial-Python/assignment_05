@@ -10,6 +10,24 @@ def create_n_rand_pts(n):
 def critical_pts(distances):
 	return min(distances), max(distances)
 	
+def euclidean_distance(a, b):
+    """
+    Compute the Euclidean distance between two points
+    Parameters
+    ----------
+    a : tuple
+        A point in the form (x,y)
+    b : tuple
+        A point in the form (x,y)
+    Returns
+    -------
+    distance : float
+               The Euclidean distance between the two points
+    """
+    distance = math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
+    return distance
+
+
 def shift_point(point, x_shift, y_shift):
     """
     Shift a point by some amount in the x and y directions

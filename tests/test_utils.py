@@ -121,6 +121,34 @@ class TestUtils(unittest.TestCase):
         distance = utils.euclidean_distance(point_b, point_a)
         self.assertAlmostEqual(0.0, distance, 4)
 		
+    def test_euclidean_distance(self):
+        """
+        A test to ensure that the distance between points
+        is being properly computed.
+        You do not need to make any changes to this test,
+        instead, in utils.py, you must complete the
+        `eucliden_distance` function so that the correct
+        values are returned.
+        Something to think about: Why might you want to test
+        different cases, e.g. all positive integers, positive
+        and negative floats, coincident points?
+        """
+        point_a = (3, 7)
+        point_b = (1, 9)
+        distance = utils.euclidean_distance(point_a, point_b)
+        self.assertAlmostEqual(2.8284271, distance, 4)
+
+        point_a = (-1.25, 2.35)
+        point_b = (4.2, -3.1)
+        distance = utils.euclidean_distance(point_a, point_b)
+        self.assertAlmostEqual(7.7074639, distance, 4)
+
+        point_a = (0, 0)
+        point_b = (0, 0)
+        distance = utils.euclidean_distance(point_b, point_a)
+        self.assertAlmostEqual(0.0, distance, 4)
+
+    
     
     def test_check_in(self):
         """

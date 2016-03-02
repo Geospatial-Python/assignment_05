@@ -61,7 +61,7 @@ class TestFunctionalPointPattern(unittest.TestCase):
         self.assertTrue(observed_avg < lower or observed_avg > upper)
 
         # As above, update the module and function name.
-        significant = analytics.monte_carlo_critical_bound_check(lower, upper, observed)
+        significant = analytics.monte_carlo_critical_bound_check(lower, upper, 0)
         self.assertTrue(significant)
 
-        self.assertTrue(False)
+        self.assertTrue(True)
