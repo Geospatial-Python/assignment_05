@@ -2,7 +2,7 @@ import random
 import math
 
 from .utils import create_n_rand_pts
-
+from .utils import euclidean_distance
 def p_perms(p=99,n=100):
 	
 	mean_nn_dist =  []
