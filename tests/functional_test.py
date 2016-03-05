@@ -44,7 +44,7 @@ class TestFunctionalPointPattern(unittest.TestCase):
         # Note: This value was originally 0.027, but the answer I calculated was not near
         # that value (even when I did the formula by hand). As such, I have modified
         # the test to match closer to my by-hand calculation.
-        self.assertAlmostEqual(0.03, observed_avg, 3)
+        self.assertAlmostEqual(0.027, observed_avg, 3)
 
         # Again, update the point_pattern module name for where you have placed the point_pattern module
         # Also update the create_random function name for whatever you named the function to generate

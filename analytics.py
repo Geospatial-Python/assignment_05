@@ -54,11 +54,11 @@ def average_nearest_neighbor_distance(points):
     mean_d = 0
     temp_nearest_neighbor = None
     # Average the nearest neighbor distance of all points.
-    for point in points:
+    for i, point in enumerate(points):
         # Find the nearest neighbor to this point.
-        for otherPoint in points:
+        for j, otherPoint in enumerate(points):
             # You are not your own neighbor.
-            if check_coincident(point, otherPoint):
+            if i == j:
                 continue
             # To avoid multiple calculations, we'll cache the result.
             current_distance = euclidean_distance(point, otherPoint)
