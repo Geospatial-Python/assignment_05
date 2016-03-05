@@ -1,4 +1,4 @@
-from .utils import *
+from . import utils
 
 
 def find_largest_city(gj):
@@ -61,7 +61,7 @@ def average_nearest_neighbor_distance(points):
             if i == j:
                 continue
             # To avoid multiple calculations, we'll cache the result.
-            current_distance = euclidean_distance(point, otherPoint)
+            current_distance = utils.euclidean_distance(point, otherPoint)
             # nearest neighbor will be None if this is the first neighbor we have iterated over.
             if temp_nearest_neighbor is None:
                 temp_nearest_neighbor = current_distance
@@ -84,7 +84,7 @@ def permutations(p = 99):
     for i in range(p):
         to_return.append(
             average_nearest_neighbor_distance(
-                create_random(n)
+                utils.create_random(n)
             )
         )
     return to_return
