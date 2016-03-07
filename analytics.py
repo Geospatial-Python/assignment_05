@@ -46,7 +46,7 @@ def average_nearest_neighbor_distance(points):
         lowest = 100
         for x in points:
             if utils.euclidean_distance(n,x)!= 0 and utils.euclidean_distance(n,x) < lowest:
-                lowest = euclidean_distance(n,x)
+                lowest = utils.euclidean_distance(n,x)
         listOfDistances.append(lowest)
 
     totalOfDistances = 0
