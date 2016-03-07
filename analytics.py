@@ -2,9 +2,9 @@ import math
 from assignment_05 import utils
 
 def check_significant(lower, upper, observed_avg):
-    significance = false
+    significance = False
     if(upper - lower <= observed_avg):
-        significance = true
+        significance = True
     return significance 
 
 def compute_critical(listOfAvgNNDistances):
