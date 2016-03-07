@@ -5,7 +5,7 @@ import random
 def create_random_points(n):
     randomPoints = []
     for x in range(n):
-        randomPoints.append((random.random(), random.random())
+        randomPoints.append((random.random(), random.random()))
 
     
     return randomPoints
