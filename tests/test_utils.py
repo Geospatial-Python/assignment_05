@@ -8,4 +8,7 @@ from .. import utils
 class TestUtils(unittest.TestCase):
 
     def setUp(self):
-        pass
+
+        
+        def check_create_random_points():
+            self.assertEqual(len(create_random_points), 100)
