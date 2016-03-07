@@ -2,7 +2,7 @@ import math
 
 def check_significant(lower, upper, observed_avg):
     significance = false
-    if(upper - lower <= observed_avg)
+    if(upper - lower <= observed_avg):
         significance = true
     return significance 
 
