@@ -18,7 +18,7 @@ def permutations(p):
     
     for x in range(p):
         tmpList = []
-        tmpList.append(create_random_points(100))
+        tmpList.append(utils.create_random_points(100))
         listOfAvgNNDistances.append(average_nearest_neighbor_distance(tmpList))
 
     return listOfAvgNNDistances    
