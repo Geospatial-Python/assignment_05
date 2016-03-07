@@ -8,9 +8,9 @@ def check_significant(lower, upper, observed_avg):
     return significance 
 
 def compute_critical(listOfAvgNNDistances):
-    criticalPoints = [2]
-    criticalPoints[0] = min(listOfAvgNNDistances)
-    criticalPoints[1] = max(listOfAvgNNDistances)
+    criticalPoints = []
+    criticalPoints.append(min(listOfAvgNNDistances))
+    criticalPoints.append(max(listOfAvgNNDistances))
     return criticalPoints;
 
 def permutations(p):
