@@ -7,5 +7,6 @@ from .. import io_geojson
 
 class TestIoGeoJson(unittest.TestCase):
 
-    def setUp(self):
-        pass
+	@classmethod
+	def setUp(self):
+		pass
