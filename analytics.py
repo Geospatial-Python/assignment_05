@@ -154,7 +154,7 @@ def average_nearest_neighbor_distance(points):
     """
     mean_d = 0
     for i in points:
-        dist_nearest=1e9
+        dist_nearest=math.inf
         for j in points:
             dist = euclidean_distance(i, j)
             if i==j:
