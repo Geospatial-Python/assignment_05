@@ -107,3 +107,4 @@ def permutation(p=99, n=100):
         per.append(average_nearest_neighbor_distance(create_random_points(n)))
 
     return per
+
