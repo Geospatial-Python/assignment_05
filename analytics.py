@@ -1,6 +1,6 @@
 import math
-import random
 
+import utils
 
 """
 	1. Organize the functions that were in point_pattern.py into the appropriate modules.
@@ -60,7 +60,7 @@ def minimum_bounding_rectangle(points):
             y_min = p[1]
         if p[1] > y_max:
             y_max = p[1]
-        mbr = [x_min,y_min,x_max, y_max]
+        mbr = [x_min, y_min, x_max, y_max]
 
     return mbr
 
@@ -81,15 +81,17 @@ def expected_distance(area, n):
     return expected
 
 
-def compute_critical(p):
-    lower = min(p)
-    upper = max(p)
+def compute_critical(points):
+
+    lower = min(points)
+    upper = max(points)
+
     return lower, upper
 
 
 def check_significant(lower, upper, observed):
 
-    if lower < observed < upper:
+    if (lower < observed) or (observed < upper):
         result = True
     else:
         result = False
