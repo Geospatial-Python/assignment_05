@@ -1,4 +1,5 @@
 import math
+import random
 
 
 def mean_center(points):
@@ -31,7 +32,33 @@ def mean_center(points):
     y = y/len(points)
     return x, y
 
+def create_random(entries):
+    rng = random.Random()
+    result = []
+    for i in range(entries):
+        x=rng.random()
+        y=rng.random()
+        point=(x,y)
+        result.append(point)
+    return result
+    
+def permutations(number_of_permutations, number_of_points):
 
+
+    result = []
+    for i in range(number_of_permutations):
+        points = create_random(number_of_points)
+        observed_avg = average_nearest_neighbor_distance(points)
+        result.append(observed_avg)
+
+    return result
+
+def compute_critical(permutations):
+    lower = min(permutations)
+    upper = max(permutations)
+
+    result = lower,upper
+    return result
 
 def average_nearest_neighbor_distance(points):
     """

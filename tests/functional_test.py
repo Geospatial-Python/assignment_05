@@ -47,11 +47,11 @@ class TestFunctionalPointPattern(unittest.TestCase):
         # Again, update the point_pattern module name for where you have placed the point_pattern module
         # Also update the create_random function name for whatever you named the function to generate
         #  random points
-        rand_points = utils.create_random(100)
+        rand_points = analytics.create_random(100)
         self.assertEqual(100, len(rand_points))
 
         # As above, update the module and function name.
-        permutations = utils.permutations(99,100)
+        permutations = analytics.permutations(99,100)
         self.assertEqual(len(permutations), 99)
         self.assertNotEqual(permutations[0], permutations[1])
 
@@ -64,5 +64,3 @@ class TestFunctionalPointPattern(unittest.TestCase):
         # As above, update the module and function name.
         significant = utils.check_significant(lower, upper, 0.6)
         self.assertTrue(significant)
-
-        

@@ -1,9 +1,8 @@
 import math
 import random
-import sys
-sys.path.append('C://Users/jmaynard/Documents/GitHub/assignment_05')
 
-import analytics
+
+
 
 
 
