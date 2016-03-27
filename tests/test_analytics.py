@@ -24,4 +24,3 @@ class TestAnalytics(unittest.TestCase):
 
         self.assertTrue(significant[0])
         self.assertFalse(significant[1])
-
