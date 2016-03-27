@@ -73,7 +73,7 @@ def gety(point):
 def average_nearest_neighbor_distance(points):
 
     mean_d = 0
-    nearest_neighbor = None
+    nearest_neighbor = math.inf
 
     for point in points:
         for otherPoint in points:
@@ -85,7 +85,7 @@ def average_nearest_neighbor_distance(points):
             elif nearest_neighbor > current_distance:
                 nearest_neighbor = current_distance
 
-        mean_d = mean_d + nearest_neighbor
+        mean_d += nearest_neighbor
         nearest_neighbor = None
 
     mean_d /= len(points)
@@ -107,4 +107,5 @@ def permutation(p=99, n=100):
         per.append(average_nearest_neighbor_distance(create_random_points(n)))
 
     return per
+
 
