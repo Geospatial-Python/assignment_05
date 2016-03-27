@@ -1,5 +1,4 @@
-import math
-import random
+from utils import *
 
 """
 	1. Organize the functions that were in point_pattern.py into the appropriate modules.
@@ -27,84 +26,72 @@ import random
 """
 
 
-def manhattan_distance(a, b):
+def mean_center(points):
 
-    distance = abs(a[0] - b[0]) + abs(a[1] - b[1])
-    return distance
+    x = 0
+    y = 0
 
+    for i in points:
+        x += i[0]
+        y += i[1]
 
-def euclidean_distance(a, b):
-
-    distance = math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
-    return distance
-
-
-def shift_point(point, x_shift, y_shift):
-
-    x = getx(point)
-    y = gety(point)
-
-    x += x_shift
-    y += y_shift
+    x /= len(points)
+    y /= len(points)
 
     return x, y
 
 
-def check_coincident(a, b):
+def minimum_bounding_rectangle(points):
 
-    return a == b
+    mbr = [0, 0, 0, 0]
+    x_min = 0
+    x_max = 0
+    y_min = 0
+    y_max = 0
 
+    for p in points:
+        if p[0] < x_min:
+            x_min = p[0]
+        if p[0] > x_max:
+            x_max = p[0]
+        if p[1] < y_min:
+            y_min = p[1]
+        if p[1] > y_max:
+            y_max = p[1]
+        mbr = [x_min, y_min, x_max, y_max]
 
-def check_in(point, point_list):
-
-    return point in point_list
-
-
-def getx(point):
-
-    return point[0]
-
-
-def gety(point):
-
-    return point[1]
-
-
-def average_nearest_neighbor_distance(points):
-
-    mean_d = 0
-    nearest_neighbor = None
-
-    for point in points:
-        for otherPoint in points:
-            if check_coincident(point, otherPoint):
-                continue
-            current_distance = euclidean_distance(point, otherPoint)
-            if nearest_neighbor is None:
-                nearest_neighbor = current_distance
-            elif nearest_neighbor > current_distance:
-                nearest_neighbor = current_distance
-
-        mean_d = mean_d + nearest_neighbor
-        nearest_neighbor = None
-
-    mean_d /= len(points)
-
-    return mean_d
+    return mbr
 
 
-def create_random_points(n):
+def mbr_area(mbr):
 
-    random_points = [(random.uniform(0, 1), random.uniform(0, 1)) in range(n)]
+    l = mbr[2] - mbr[0]
+    w = mbr[3] - mbr[1]
+    area = l * w
 
-    return random_points
+    return area
 
 
-def permutation(p=99, n=100):
+def expected_distance(area, n):
 
-    per = []
-    for x in range(p):
-        per.append(average_nearest_neighbor_distance(create_random_points(n)))
+    expected = 0.5 * (math.sqrt(area / n))
 
-    return per
+    return expected
 
+
+def compute_critical(points):
+
+    l = min(points)
+    u = max(points)
+
+    return l, u
+
+
+def check_significant(l, u, observed):
+
+    if (l < observed) or (observed < u):
+        result = True
+    else:
+        result = False
+
+    return result
