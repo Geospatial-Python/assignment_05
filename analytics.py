@@ -1,6 +1,4 @@
-import math
-
-import utils
+from utils import *
 
 """
 	1. Organize the functions that were in point_pattern.py into the appropriate modules.
@@ -83,15 +81,15 @@ def expected_distance(area, n):
 
 def compute_critical(points):
 
-    lower = min(points)
-    upper = max(points)
+    l = min(points)
+    u = max(points)
 
-    return lower, upper
+    return l, u
 
 
-def check_significant(lower, upper, observed):
+def check_significant(l, u, observed):
 
-    if (lower < observed) or (observed < upper):
+    if (l < observed) or (observed < u):
         result = True
     else:
         result = False
