@@ -85,7 +85,7 @@ def average_nearest_neighbor_distance(points):
             elif nearest_neighbor > current_distance:
                 nearest_neighbor = current_distance
 
-        mean_d += nearest_neighbor
+        mean_d = mean_d + nearest_neighbor
         nearest_neighbor = None
 
     mean_d /= len(points)
