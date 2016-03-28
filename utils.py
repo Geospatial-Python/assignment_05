@@ -108,4 +108,3 @@ def permutation(p=99, n=100):
 
     return per
 
-
