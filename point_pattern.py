@@ -1,4 +1,98 @@
-import math
+import math  # I am guessing that you will need to use the math module
+import json  # I would like you to use the JSON module for reading geojson (for now)
+"""
+Like last assignment, we are going to be working with point
+patterns.  The readings focused on iteration, sequences, and
+conditional execution.  We are going to use these concepts
+to write functions to:
+1. Read a geojson file
+2. Parse a geojson file to find the largest city by population
+3. Write your own code to do something interesting with the geojson
+4. Compute the mean center of a point pattern
+5. Compute the average distance between neighbors
+6. Compute the miminum bounding rectangle (MBR) on a point pattern
+7. Compute the area of a MBR
+8. Compute the expected mean distance for a given point pattern
+"""
+
+
+def read_geojson(input_file):
+    """
+    Read a geojson file
+    Parameters
+    ----------
+    input_file : str
+                 The PATH to the data to be read
+    Returns
+    -------
+    gj : dict
+         An in memory version of the geojson
+    """
+    # Please use the python json module (imported above)
+    # to solve this one.
+    with open(input_file, 'r') as f:
+        gj = json.load(f)
+    return gj
+
+def find_largest_city(gj):
+    """
+    Iterate through a geojson feature collection and
+    find the largest city.  Assume that the key
+    to access the maximum population is 'pop_max'.
+    Parameters
+    ----------
+    gj : dict
+         A GeoJSON file read in as a Python dictionary
+    Returns
+    -------
+    city : str
+           The largest city
+    population : int
+                 The population of the largest city
+    """
+    list_cities = []
+    list_pop = []
+
+    for d in kj['features']:
+        pop_max = d['properties']['pop_max']
+        citys = d['properties']['ls_name']
+        list_cities.append(citys)
+        list_pop.append(pop_max)
+
+    max_population = max(list_pop)
+    index_pop = list_pop.index(max_population)
+
+    city = list_cities[index_pop]
+
+    return city, max_population
+
+
+def write_your_own(gj):
+    """
+    Here you will write your own code to find
+    some attribute in the supplied geojson file.
+    Take a look at the attributes available and pick
+    something interesting that you might like to find
+    or summarize.  This is totally up to you.
+    Do not forget to write the accompanying test in
+    tests.py!
+    """
+    list_cities2 = []
+    home_state = []
+
+    for s in gj['features']:
+        citys2 = s['properties']['ls_name']
+        statenm = s['properties']['adm1name']
+        list_cities2.append(citys2)
+        home_state.append(statenm)
+
+    v = raw_input('Type a city name to return its state...')
+    citynumber = list_cities2.index(v)
+    stateans = home_state[citynumber]
+
+    return stateans
+
+
 
 def mean_center(points):
     """
@@ -21,6 +115,9 @@ def mean_center(points):
         y += coor[1]/len(points)
 
     return x, y
+
+sub = [(1,2), (3,4)]
+
 
 def average_nearest_neighbor_distance(points):
 
@@ -82,6 +179,7 @@ def minimum_bounding_rectangle(points):
 
     return mbr
 
+
 def mbr_area(mbr):
     """
     Compute the area of a minimum bounding rectangle
@@ -94,6 +192,7 @@ def mbr_area(mbr):
     area = length * width
 
     return area
+
 
 def expected_distance(area, n):
     """
@@ -116,6 +215,15 @@ def expected_distance(area, n):
 
     expected = 0.5 * (math.sqrt(area / n))
     return expected
+
+
+"""
+Below are the functions that you created last week.
+Your syntax might have been different (which is awesome),
+but the functionality is identical.  No need to touch
+these unless you are interested in another way of solving
+the assignment
+"""
 
 def manhattan_distance(a, b):
     """
@@ -151,6 +259,7 @@ def euclidean_distance(a, b):
     """
     distance = math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
     return distance
+
 
 def shift_point(point, x_shift, y_shift):
     """
@@ -213,3 +322,37 @@ def check_in(point, point_list):
                  in the form [point, point_1, point_2, ..., point_n]
     """
     return point in point_list
+
+
+def getx(point):
+    """
+    A simple method to return the x coordinate of
+     an tuple in the form(x,y).  We will look at
+     sequences in a coming lesson.
+    Parameters
+    ----------
+    point : tuple
+            in the form (x,y)
+    Returns
+    -------
+     : int or float
+       x coordinate
+    """
+    return point[0]
+
+
+def gety(point):
+    """
+    A simple method to return the x coordinate of
+     an tuple in the form(x,y).  We will look at
+     sequences in a coming lesson.
+    Parameters
+    ----------
+    point : tuple
+            in the form (x,y)
+    Returns
+    -------
+     : int or float
+       y coordinate
+    """
+    return point[1]
