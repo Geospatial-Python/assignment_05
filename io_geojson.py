@@ -21,3 +21,4 @@ def read_geojson(input_file):
     with open(input_file) as f:
         gj = json.load(f)
     return gj
+
