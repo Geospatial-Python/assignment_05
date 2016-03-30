@@ -69,6 +69,48 @@ def average_nearest_neighbor_distance(points):
     return mean_d
 
 
+def euclidean_distance(a, b):
+    """
+    Compute the Euclidean distance between two points
+
+    Parameters
+    ----------
+    a : tuple
+        A point in the form (x,y)
+
+    b : tuple
+        A point in the form (x,y)
+
+    Returns
+    -------
+
+    distance : float
+               The Euclidean distance between the two points
+    """
+    distance = math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
+    return distance
+
+
+def  permutation(p=99, n=100):
+    """
+    Return the mean nearest neighbor distance of p permutations.
+
+    Parameters
+    ----------
+    p : integer
+    n : integer
+
+    Returns
+    -------
+    permutations : list
+            the mean nearest neighbor distance list.
+
+    """
+    permutation_list=[]
+    for i in range(p):
+        permutation_list.append(average_nearest_neighbor_distance(generate_random_points(n)))
+    return permutation_list
+
 def minimum_bounding_rectangle(points):
     """
     Given a set of points, compute the minimum bounding rectangle.

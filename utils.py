@@ -1,6 +1,6 @@
 import math
 import random
-from .analytics import *
+
 
 def generate_random_points(n):
     """
@@ -19,25 +19,7 @@ def generate_random_points(n):
     return [(random.uniform(0,1), random.uniform(0,1)) for i in range(n)]
 
 
-def  permutation(p=99, n=100):
-    """
-    Return the mean nearest neighbor distance of p permutations.
 
-    Parameters
-    ----------
-    p : integer
-    n : integer
-
-    Returns
-    -------
-    permutations : list
-            the mean nearest neighbor distance list.
-
-    """
-    permutation_list=[]
-    for i in range(p):
-        permutation_list.append(average_nearest_neighbor_distance(generate_random_points(n)))
-    return permutation_list
 
 def  critical_points(permutations):
     """
@@ -101,26 +83,6 @@ def manhattan_distance(a, b):
     return distance
 
 
-def euclidean_distance(a, b):
-    """
-    Compute the Euclidean distance between two points
-
-    Parameters
-    ----------
-    a : tuple
-        A point in the form (x,y)
-
-    b : tuple
-        A point in the form (x,y)
-
-    Returns
-    -------
-
-    distance : float
-               The Euclidean distance between the two points
-    """
-    distance = math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
-    return distance
 
 
 def shift_point(point, x_shift, y_shift):
