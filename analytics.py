@@ -1,5 +1,5 @@
 import math
-from .untils import *
+from .utils import *
 
 
 def mean_center(points):
