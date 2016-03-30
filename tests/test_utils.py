@@ -5,6 +5,7 @@ import random
 sys.path.insert(0, os.path.abspath('..'))
 
 from .. import utils
+import analytics
 
 
 class TestUtils(unittest.TestCase):
@@ -96,3 +97,26 @@ class TestUtils(unittest.TestCase):
 
         inlist = utils.check_in((6, 4), point_list)
         self.assertFalse(inlist)
+
+    def test_generate_random_points(self):
+        rand_points = utils.generate_random_points(100)
+        self.assertEqual(100, len(rand_points))
+
+    def test_permutations(self):
+        permutations = utils.permutations(99)
+        self.assertEqual(len(permutations), 99)
+        self.assertNotEqual(permutations[0], permutations[1])
+
+    def test_crit_tations(self):
+        observed_avg = analytics.average_nearest_neighbor_distance(self.points)
+        permutations = utils.permutations(99)
+        lower, upper = utils.crit_tations(permutations)
+        self.assertTrue(lower > 0.03)
+        self.assertTrue(upper < 0.07)
+        self.assertTrue(observed_avg < lower or observed_avg > upper)
+
+    def test_check_yer_sig(self):
+        permutations = utils.permutations(99)
+        lower, upper = utils.crit_tations(permutations)
+        significant = utils.check_yer_sig(lower, upper, observed)
+        self.assertTrue(significant)

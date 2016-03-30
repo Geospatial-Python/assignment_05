@@ -46,12 +46,11 @@ def mean_center(points):
 
 def average_nearest_neighbor_distance(points):
     shortest_path = []
-    for p_one in points:
+    for num1, p_one in enumerate(points):
         distance = []
-        for p_two in points:
-            if math.sqrt((p_one[0] - p_two[0])**2 + (p_one[1] - p_two[1])**2)==0:
-                continue
-            distance.append(math.sqrt((p_one[0] - p_two[0])**2 + (p_one[1] - p_two[1])**2))
+        for num2, p_two in enumerate(points):
+            if num1 != num2:
+                distance.append(math.sqrt((p_one[0] - p_two[0])**2 + (p_one[1] - p_two[1])**2))
         shortest_path.append(min(distance))
     mean_d = sum(shortest_path)/len(shortest_path)
     return mean_d

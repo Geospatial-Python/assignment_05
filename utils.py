@@ -1,6 +1,7 @@
 import math
 import random
 
+import analytics
 
 def getx(point):
     return point[0]
@@ -39,3 +40,27 @@ def check_coincident(a, b):
 
 def check_in(point, point_list):
     return point in point_list
+
+
+def generate_random_points(n):
+    n_points = [(random.uniform(0, 1), random.uniform(0, 1)) for x in range(n)]
+    return n_points
+
+
+def permutations(p=99, n=100):
+    solution = []
+    for tations in range(p):
+        solution.append(analytics.average_nearest_neighbor_distance(generate_random_points(n)))
+    return solution
+
+
+def crit_tations(perms):
+    max_tation = max(perms)
+    min_tation = min(perms)
+    return max_tation, min_tation
+
+
+def check_yer_sig(max_tation2, min_tation2, obser_tation):
+    return min_tation2 <= obser_tation or obser_tation <= max_tation2
+
+

@@ -151,6 +151,7 @@ def average_nearest_neighbor_distance(points):
     mean_d = sum(shortest_path)/len(shortest_path)
     return mean_d
 
+
 def minimum_bounding_rectangle(points):
     """
     Given a set of points, compute the minimum bounding rectangle.
