@@ -1,6 +1,6 @@
 import math
 import random
-import analytics
+from .analytics import *
 
 def generate_random_points(n):
     """
@@ -36,7 +36,7 @@ def  permutation(p=99, n=100):
     """
     permutation_list=[]
     for i in range(p):
-        permutation_list.append(analytics.average_nearest_neighbor_distance(generate_random_points(n)))
+        permutation_list.append(average_nearest_neighbor_distance(generate_random_points(n)))
     return permutation_list
 
 def  critical_points(permutations):

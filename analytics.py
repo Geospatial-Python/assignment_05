@@ -1,5 +1,5 @@
 import math
-import utils
+from .untils import *
 
 
 def mean_center(points):
@@ -62,7 +62,7 @@ def average_nearest_neighbor_distance(points):
             if i==j:
                 continue
             else:
-                distance.append(utils.euclidean_distance(points[i],points[j]))
+                distance.append(euclidean_distance(points[i],points[j]))
         nearest_distances.append(min(distance))
 
     mean_d=float(sum(nearest_distances)/len(nearest_distances))
